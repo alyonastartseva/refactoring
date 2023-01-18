@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Farm1
 {
     class Cell
     {
-        public int x;
-        public int y;
+        public readonly Point Coordinates;
+
         public int fullness = 0;
         /* fullness:
         0 - empty \ seed
@@ -33,31 +34,9 @@ namespace Farm1
         public bool plantSeed = false;
         public bool animal = false;
 
-        public Cell(int X, int Y)
+        public Cell(int x, int y)
         {
-            x = X;
-            y = Y;
-        }
-        /*public int Definition()
-        {
-            if (plantInfertileEdible)
-                fullness = 1;
-            else if (plantFruitingEdible)
-                fullness = 2;
-            else if (plantInfertilePoisonous)
-                fullness = 3;
-            else if (plantFruitingPoisonous)
-                fullness = 4;
-            else if (fruit)
-                fullness = 5;
-            else if (fruitPoisonous)
-                fullness = 6;
-            else if (plantInfertileInEdible)
-                fullness = 7;
-            else if (plantFruitingInEdible)
-                fullness = 8;
-            return fullness;
-        }*/
-        
+            Coordinates = new Point(x, y);
+        }        
     }
 }

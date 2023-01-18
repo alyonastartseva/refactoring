@@ -45,22 +45,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animal.cs" />
-    <Compile Include="Cell.cs" />
+    <Compile Include="Classes\Animal.cs" />
+    <Compile Include="Classes\Cell.cs" />
+    <Compile Include="Classes\SimulationObject.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fruit.cs" />
-    <Compile Include="FruitingEdiblePlant.cs" />
-    <Compile Include="FruitingInEdiblePlant.cs" />
-    <Compile Include="FruitingPoisonousPlant.cs" />
-    <Compile Include="InfertileEdiblePlant.cs" />
-    <Compile Include="InfertileInEdiblePlant.cs" />
-    <Compile Include="InfertilePoisonousPlant.cs" />
-    <Compile Include="Plant.cs" />
+    <Compile Include="Classes\Fruit.cs" />
+    <Compile Include="Classes\FruitingEdiblePlant.cs" />
+    <Compile Include="Classes\FruitingInEdiblePlant.cs" />
+    <Compile Include="Classes\FruitingPoisonousPlant.cs" />
+    <Compile Include="Classes\InfertileEdiblePlant.cs" />
+    <Compile Include="Classes\InfertileInEdiblePlant.cs" />
+    <Compile Include="Classes\InfertilePoisonousPlant.cs" />
+    <Compile Include="Classes\Plant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

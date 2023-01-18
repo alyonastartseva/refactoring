@@ -1,20 +1,18 @@
-﻿using System;
+﻿using Farm1.Classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Farm1
 {
-    class Animal
+    class Animal: SimulationObject
     {
         public int satiety = 100;
         public int health = 100;
         public int location = 0;
-        public int x = 0;
-        public int y = 0;
+
         Random rnd = new Random();
-        public bool existence = true;
+
+        public Animal() : base() { }
 
         public int Step(Dictionary <int, Cell> cells) //New logic with Dictionary Cells!
         {
@@ -28,29 +26,29 @@ namespace Farm1
 
             if (satiety > 40)
             {
-                x += rnd.Next(-1, 1);
-                y += rnd.Next(-1, 1);
+                Coordinates.X += rnd.Next(-1, 1);
+                Coordinates.Y += rnd.Next(-1, 1);
             }
             else
             {
-                x += rnd.Next(-1, 0);
-                y += rnd.Next(-1, 0);
+                Coordinates.X += rnd.Next(-1, 0);
+                Coordinates.Y += rnd.Next(-1, 0);
             }
 
-            if (x < 0)
-                x *= (-1);
+            if (Coordinates.X < 0)
+                Coordinates.X *= (-1);
 
-            if (y < 0)
-                y *= (-1);
+            if (Coordinates.Y < 0)
+                Coordinates.Y *= (-1);
 
-            if (x > 1000)
-                x = 1000 - x;
+            if (Coordinates.X > 1000)
+                Coordinates.X = 1000 - Coordinates.X;
 
-            if (y > 1000)
-                y = 1000 - 1;
+            if (Coordinates.Y > 1000)
+                Coordinates.Y = 1000 - 1;
 
 
-            location = x + y * 1000;
+            location = Coordinates.X + Coordinates.Y * 1000;
 
             if (location == 0)
                 location++;
@@ -65,7 +63,7 @@ namespace Farm1
 
         public void Die() //Edit
         {
-            existence = false;
+            IsAlive = false;
         }
     }
 }

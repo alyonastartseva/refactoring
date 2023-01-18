@@ -84,7 +84,7 @@ namespace Farm1
                 {
                     random = rnd.Next(1, amountCells);
                 }
-                plantFruitingPoisonous[random].existence = true;
+                plantFruitingPoisonous[random].IsAlive = true;
                 cells[random].plantSeed = true;
                 cells[random].fullness = 4;
             }
@@ -95,7 +95,7 @@ namespace Farm1
                 {
                     random = rnd.Next(1, amountCells);
                 }
-                plantFruitingEdible[random].existence = true;
+                plantFruitingEdible[random].IsAlive = true;
                 cells[random].plantSeed = true;
                 cells[random].fullness = 2;
             }
@@ -106,7 +106,7 @@ namespace Farm1
                 {
                     random = rnd.Next(1, amountCells);
                 }
-                plantFruitingInEdible[random].existence = true;
+                plantFruitingInEdible[random].IsAlive = true;
                 cells[random].plantSeed = true;
                 cells[random].fullness = 8;
             }
@@ -117,7 +117,7 @@ namespace Farm1
                 {
                     random = rnd.Next(1, amountCells);
                 }
-                plantInfertilePoisonous[random].existence = true;
+                plantInfertilePoisonous[random].IsAlive = true;
                 cells[random].plantSeed = true;
                 cells[random].fullness = 3;
             }
@@ -128,7 +128,7 @@ namespace Farm1
                 {
                     random = rnd.Next(1, amountCells);
                 }
-                plantInfertileEdible[random].existence = true;
+                plantInfertileEdible[random].IsAlive = true;
                 cells[random].plantSeed = true;
                 cells[random].fullness = 1;
             }
@@ -139,7 +139,7 @@ namespace Farm1
                 {
                     random = rnd.Next(1, amountCells);
                 }
-                plantInfertileInEdible[random].existence = true;
+                plantInfertileInEdible[random].IsAlive = true;
                 cells[random].plantSeed = true;
                 cells[random].fullness = 7;
             }
@@ -154,8 +154,8 @@ namespace Farm1
                 }
                 animal.Add(i, new Animal());
                 cells[i].fullness = 9;
-                animal[i].x = random % amountCellsX;
-                animal[i].y = random / amountCellsX;
+                animal[i].Coordinates.X = random % amountCellsX;
+                animal[i].Coordinates.Y = random / amountCellsX;
             }
 
             Painting();
@@ -210,8 +210,8 @@ namespace Farm1
 
             for (int i = 1; i <= amountAnimals; i++)
             {
-                if (animal[i].existence)
-                    graphics.FillRectangle(Brushes.Red, animal[i].x * sizeCellPlus + 2, animal[i].y * sizeCellPlus + 2, sizeCell, sizeCell);
+                if (animal[i].IsAlive)
+                    graphics.FillRectangle(Brushes.Red, animal[i].Coordinates.X * sizeCellPlus + 2, animal[i].Coordinates.Y * sizeCellPlus + 2, sizeCell, sizeCell);
             }
         }
 
@@ -290,7 +290,7 @@ namespace Farm1
             //Realize another Animal Step logic
             for (int i = 1; i <= amountAnimals; i++)
             {
-                if (animal[i].existence)
+                if (animal[i].IsAlive)
                 {
                     step = animal[i].Step(cells); //Edit this moment with new logic
                     if ((cells[step].fruit) && (fruits[step].poison))

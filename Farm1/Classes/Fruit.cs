@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Farm1.Classes;
 
 namespace Farm1
 {
-    class Fruit
+    class Fruit: SimulationObject
     {
-        public int x;
-        public int y;
         public bool poison = false;
         public int time = 0;
         public FruitState state = FruitState.Empty;
-        public bool existence = false;
+
+        public Fruit() : base() { }
 
         public void Update()
         {
@@ -28,7 +23,7 @@ namespace Farm1
                 state = FruitState.Rotten;
             else
             {
-                existence = false;
+                IsAlive = false;
                 time = 0;
                 state = FruitState.Empty;
             }
@@ -43,6 +38,5 @@ namespace Farm1
         Medium,
         Done,
         Rotten
-
     }
 }

@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace Farm1
 {
-    class InfertileEdiblePlant : Plant
+    class InfertileInEdiblePlant : Plant
     {
-        public InfertileEdiblePlant(int X, int Y)
+        public InfertileInEdiblePlant(int X, int Y)
         {
-            x = X;
-            y = Y;
+            Coordinates.X = X;
+            Coordinates.Y = Y;
         }
 
-        static InfertileEdiblePlant()
+        static InfertileInEdiblePlant()
         {
             poison = false;
-            edible = true;
+            edible = false;
             fruit = false;
         }
 
-        public void Mechanochoria(Dictionary<int, Cell> cells, Dictionary<int, InfertileEdiblePlant> plantInfertileEdible, int amountX, int amountY)
+        public void Mechanochoria(Dictionary<int, Cell> cells, Dictionary<int, InfertileInEdiblePlant> plantInfertileInEdible, int amountX, int amountY)
         {
-            int xx = x;
-            int yy = y;
+            int xx = Coordinates.X;
+            int yy = Coordinates.Y;
             int check = 0;
             if (xx < amountX)
             {
@@ -33,7 +33,7 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantInfertileEdible[check].existence = true;
+                    plantInfertileInEdible[check].IsAlive = true;
                 }
             }
             if (xx > 1)
@@ -43,7 +43,7 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantInfertileEdible[check].existence = true;
+                    plantInfertileInEdible[check].IsAlive = true;
                 }
             }
             if (yy < amountY - 1)
@@ -53,7 +53,7 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantInfertileEdible[check].existence = true;
+                    plantInfertileInEdible[check].IsAlive = true;
                 }
             }
             if (yy > 0)
@@ -63,7 +63,7 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantInfertileEdible[check].existence = true;
+                    plantInfertileInEdible[check].IsAlive = true;
                 }
             }
         }
