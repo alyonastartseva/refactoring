@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Farm1.Classes;
 
 namespace Farm1
 {
-    class Plant
+    class Plant: SimulationObject
     {
         public int time = 0; 
-        public int x;
-        public int y;
+        
         public static bool poison;
         public static bool fruit;
         public static bool edible;
-        public CellState state = CellState.Seed;
-        public bool existence = false;
 
-        
+        public CellState state = CellState.Seed;
+
+        public Plant() : base() { }
         
         public void Die()
         {
-            existence = false;
+            IsAlive = false;
         }
 
         public CellState Step()
@@ -39,7 +34,7 @@ namespace Farm1
                 state = CellState.Rotten;
             else
             {
-                existence = false;
+                IsAlive = false;
                 time = 0;
                 state = CellState.Empty;
             }
@@ -56,6 +51,5 @@ namespace Farm1
         Green,
         Function,
         Rotten
-
     }
 }
