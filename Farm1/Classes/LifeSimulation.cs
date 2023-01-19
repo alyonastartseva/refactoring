@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
@@ -72,81 +73,50 @@ namespace Farm1.Classes
             }
         }
 
+        static private void GrowPlants<TType>()
+           where TType : Plant, new()
+        {
+            List<SimulationObject> plants = Map.SimulationObjects.Where(unit => unit is Plant).ToList();
+
+            for (int i = 0; i < plants.Count - 1; ++i)
+            {
+                Point randomPoint = new Point();
+
+                Plant randomPlant = (Plant)plants[Map.Random.Next(plants.Count)];
+
+                randomPoint.X = Math.Max(Math.Min(randomPlant.Coordinates.X + Map.Random.Next(2) - 1, Map.Height - 1), 0);
+                randomPoint.Y = Math.Max(Math.Min(randomPlant.Coordinates.Y + Map.Random.Next(2) - 1, Map.Height - 1), 0);
+
+                var newObject = new TType();
+                newObject.Coordinates = randomPoint;
+
+                Map.SimulationObjects.Add(newObject);
+                Map.Area[newObject.Coordinates.Y * Map.Width + newObject.Coordinates.X].Objects.Add(newObject);
+
+                CellsToRedraw.Add(newObject.Coordinates);
+
+                CellsToRedraw.Add(((Plant)plants[i]).Step());
+            }
+        }
+
+        static private void GrowPlants()
+        {
+            GrowPlants<FruitingEdiblePlant>();
+            GrowPlants<FruitingInEdiblePlant>();
+            GrowPlants<FruitingPoisonousPlant>();
+            GrowPlants<InfertileEdiblePlant>();
+            GrowPlants<InfertileInEdiblePlant>();
+            GrowPlants<InfertilePoisonousPlant>();
+        }
+
         static public List<Point> UpdateSimulation()
         {
             CellsToRedraw = new List<Point>();
 
             MoveAnimals();
+            GrowPlants();
 
             return CellsToRedraw;
-
-            //TODO Переработать логику типов растений и изменить метод размножения растений
-            /*List<SimulationObject> plants = Map.SimulationObjects.Where(unit => unit is Plant).ToList();
-            for (int i = 1; i < amountCells; i++)
-            {
-                if (cells[i].fullness != 0)
-                {
-                    switch (cells[i].fullness)
-                    {
-                        case 1:
-                            stepPlant = plantInfertileEdible[i].Step();
-                            if (stepPlant == CellState.Function)
-                                plantInfertileEdible[i].Mechanochoria(cells, plantInfertileEdible, amountCellsX, amountCellsY);
-                            break;
-                        case 2:
-                            stepPlant = plantFruitingEdible[i].Step();
-                            if (stepPlant == CellState.Function)
-                            {
-                                cells[i].fruit = true;
-                                plantFruitingEdible[i].Mechanochoria(cells, plantFruitingEdible, amountCellsX, amountCellsY);
-                                plantFruitingEdible[i].Fruiting(fruits[i]);
-                            }
-                            break;
-                        case 3:
-                            stepPlant = plantInfertilePoisonous[i].Step();
-                            if (stepPlant == CellState.Function)
-                                plantInfertilePoisonous[i].Mechanochoria(cells, plantInfertilePoisonous, amountCellsX, amountCellsY);
-                            break;
-                        case 4:
-                            stepPlant = plantFruitingPoisonous[i].Step();
-                            if (stepPlant == CellState.Function)
-                            {
-                                cells[i].fruit = true;
-                                plantFruitingPoisonous[i].Mechanochoria(cells, plantFruitingPoisonous, amountCellsX, amountCellsY);
-                                plantFruitingPoisonous[i].Fruiting(fruits[i]);
-                            }
-                            break;
-                        case 7:
-                            stepPlant = plantInfertileInEdible[i].Step();
-                            if (stepPlant == CellState.Function)
-                                plantInfertileInEdible[i].Mechanochoria(cells, plantInfertileInEdible, amountCellsX, amountCellsY);
-                            break;
-                        case 8:
-                            stepPlant = plantFruitingInEdible[i].Step();
-                            if (stepPlant == CellState.Function)
-                            {
-                                cells[i].fruit = true;
-                                plantFruitingInEdible[i].Mechanochoria(cells, plantFruitingInEdible, amountCellsX, amountCellsY);
-                                plantFruitingInEdible[i].Fruiting(fruits[i]);
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                    if (stepPlant == CellState.Sprout)
-                        cells[i].plantSeed = false;
-                    else if (stepPlant == CellState.Empty)
-                        cells[i].fullness = 0;
-                    stepPlant = CellState.Empty;
-                }
-
-                if (cells[i].fruit)
-                {
-                    fruits[i].Update();
-                    if (fruits[i].state == FruitState.Empty)
-                        cells[i].fruit = false;
-                }
-            }*/
         }
     }
 }

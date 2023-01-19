@@ -22,8 +22,6 @@ namespace Farm1
         public Brush color;
 
         public int date = 0;
- 
-        public bool eat = false;
 
         private void InitializeMap()
         {
@@ -51,6 +49,8 @@ namespace Farm1
 
         private void PaintingSimulationObjects(List<Point> cells)
         {
+            PaintingLines();
+
             foreach (var cell in cells)
             {
                 if (Map.Area[cell.Y * Map.Width + cell.X].Objects.Count != 0)
@@ -73,7 +73,6 @@ namespace Farm1
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            PaintingLines();
             PaintingSimulationObjects(LifeSimulation.UpdateSimulation());
             pictureBox.Refresh();
 

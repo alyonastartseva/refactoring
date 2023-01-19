@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace Farm1
 {
-    class Plant: SimulationObject
+    abstract class Plant: SimulationObject
     {
         public int time = 0; 
         
@@ -23,7 +23,7 @@ namespace Farm1
             IsAlive = false;
         }
 
-        public CellState Step()
+        public Point Step()
         {
             time++;
             if (time <= 3)
@@ -58,9 +58,8 @@ namespace Farm1
                 state = CellState.Empty;
                 Color = Color.White;
             }
-            return state;
+            return Coordinates;
         }
-
     }
 
     enum CellState

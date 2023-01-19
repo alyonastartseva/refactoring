@@ -57,13 +57,13 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\SimulationObjects\Fruit.cs" />
-    <Compile Include="Classes\SimulationObjects\FruitingEdiblePlant.cs" />
-    <Compile Include="Classes\SimulationObjects\FruitingInEdiblePlant.cs" />
-    <Compile Include="Classes\SimulationObjects\FruitingPoisonousPlant.cs" />
-    <Compile Include="Classes\SimulationObjects\InfertileEdiblePlant.cs" />
-    <Compile Include="Classes\SimulationObjects\InfertileInEdiblePlant.cs" />
-    <Compile Include="Classes\SimulationObjects\InfertilePoisonousPlant.cs" />
-    <Compile Include="Classes\SimulationObjects\Plant.cs" />
+    <Compile Include="Classes\SimulationObjects\Plants\FruitingEdiblePlant.cs" />
+    <Compile Include="Classes\SimulationObjects\Plants\FruitingInEdiblePlant.cs" />
+    <Compile Include="Classes\SimulationObjects\Plants\FruitingPoisonousPlant.cs" />
+    <Compile Include="Classes\SimulationObjects\Plants\InfertileEdiblePlant.cs" />
+    <Compile Include="Classes\SimulationObjects\Plants\InfertileInEdiblePlant.cs" />
+    <Compile Include="Classes\SimulationObjects\Plants\InfertilePoisonousPlant.cs" />
+    <Compile Include="Classes\SimulationObjects\Plants\Plant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -91,5 +91,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
