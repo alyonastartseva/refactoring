@@ -1,6 +1,7 @@
 ﻿using Farm1.Classes;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace Farm1
 {
@@ -12,9 +13,11 @@ namespace Farm1
 
         Random rnd = new Random();
 
-        public Animal() : base() { }
+        public Animal() : base() {
+            Color = Color.Red;
+        }
 
-        public int Step(Dictionary <int, Cell> cells) //New logic with Dictionary Cells!
+        public Point Step()
         {
             if (satiety > 0)
                 satiety--;
@@ -47,13 +50,7 @@ namespace Farm1
             if (Coordinates.Y > 1000)
                 Coordinates.Y = 1000 - 1;
 
-
-            location = Coordinates.X + Coordinates.Y * 1000;
-
-            if (location == 0)
-                location++;
-
-            return location;
+            return Coordinates;
         }
 
         public void Eat(int success)

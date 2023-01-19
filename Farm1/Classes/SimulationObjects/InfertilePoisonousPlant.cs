@@ -6,22 +6,16 @@ using System.Threading.Tasks;
 
 namespace Farm1
 {
-    class InfertileEdiblePlant : Plant
+    class InfertilePoisonousPlant: Plant
     {
-        public InfertileEdiblePlant(int X, int Y)
+        static InfertilePoisonousPlant()
         {
-            Coordinates.X = X;
-            Coordinates.Y = Y;
-        }
-
-        static InfertileEdiblePlant()
-        {
-            poison = false;
+            poison = true;
             edible = true;
             fruit = false;
         }
 
-        public void Mechanochoria(Dictionary<int, Cell> cells, Dictionary<int, InfertileEdiblePlant> plantInfertileEdible, int amountX, int amountY)
+        /*public void Mechanochoria(Dictionary<int, Cell> cells, Dictionary<int, InfertilePoisonousPlant> plantInfertilePoisonous, int amountX, int amountY)
         {
             int xx = Coordinates.X;
             int yy = Coordinates.Y;
@@ -33,7 +27,7 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantInfertileEdible[check].IsAlive = true;
+                    plantInfertilePoisonous[check].IsAlive = true;
                 }
             }
             if (xx > 1)
@@ -43,7 +37,7 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantInfertileEdible[check].IsAlive = true;
+                    plantInfertilePoisonous[check].IsAlive = true;
                 }
             }
             if (yy < amountY - 1)
@@ -53,7 +47,7 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantInfertileEdible[check].IsAlive = true;
+                    plantInfertilePoisonous[check].IsAlive = true;
                 }
             }
             if (yy > 0)
@@ -63,9 +57,9 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantInfertileEdible[check].IsAlive = true;
+                    plantInfertilePoisonous[check].IsAlive = true;
                 }
             }
-        }
+        }*/
     }
 }

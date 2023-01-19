@@ -8,6 +8,7 @@ namespace Farm1.Classes
         protected static Random Random = new Random();
 
         public Point Coordinates;
+        public Color Color;
         public bool IsAlive;
 
         public SimulationObject()
