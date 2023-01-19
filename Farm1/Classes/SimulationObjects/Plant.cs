@@ -1,4 +1,5 @@
 ﻿using Farm1.Classes;
+using System.Drawing;
 
 namespace Farm1
 {
@@ -12,7 +13,10 @@ namespace Farm1
 
         public CellState state = CellState.Seed;
 
-        public Plant() : base() { }
+        public Plant() : base() {
+            Color = Color.DeepPink;
+            state = CellState.Seed;
+        }
         
         public void Die()
         {
@@ -23,20 +27,36 @@ namespace Farm1
         {
             time++;
             if (time <= 3)
+            {
                 state = CellState.Seed;
+                Color = Color.Yellow;
+            }
             else if (time <= 7)
+            {
                 state = CellState.Sprout;
+                Color = Color.GreenYellow;
+            }
             else if (time <= 14)
+            {
                 state = CellState.Green;
+                Color = Color.Lime;
+            }
             else if (time <= 15)
+            {
                 state = CellState.Function;
+                Color = Color.Green;
+            }
             else if (time <= 30)
+            {
                 state = CellState.Rotten;
+                Color = Color.Chocolate;
+            }
             else
             {
                 IsAlive = false;
                 time = 0;
                 state = CellState.Empty;
+                Color = Color.White;
             }
             return state;
         }

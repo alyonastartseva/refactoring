@@ -6,19 +6,12 @@ using System.Threading.Tasks;
 
 namespace Farm1
 {
-    class FruitingEdiblePlant: Plant
+    class FruitingInEdiblePlant: Plant 
     {
-
-        public FruitingEdiblePlant(int X, int Y)
-        {
-            Coordinates.X = X;
-            Coordinates.Y = Y;
-        }
-
-        static FruitingEdiblePlant()
+        static FruitingInEdiblePlant()
         {
             poison = false;
-            edible = true;
+            edible = false;
             fruit = true;
         }
 
@@ -28,7 +21,7 @@ namespace Farm1
             return fruit;
         }
 
-        public void Mechanochoria(Dictionary<int, Cell> cells, Dictionary<int, FruitingEdiblePlant> plantFruitingEdible, int amountX, int amountY)
+        /*public void Mechanochoria(Dictionary<int, Cell> cells, Dictionary<int, FruitingInEdiblePlant> plantFruitingInEdible, int amountX, int amountY)
         {
             int xx = Coordinates.X;
             int yy = Coordinates.Y;
@@ -40,7 +33,7 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantFruitingEdible[check].IsAlive = true;
+                    plantFruitingInEdible[check].IsAlive = true;
                 }
             }
             if (xx > 1)
@@ -50,7 +43,7 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantFruitingEdible[check].IsAlive = true;
+                    plantFruitingInEdible[check].IsAlive = true;
                 }
             }
             if (yy < amountY - 1)
@@ -60,7 +53,7 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantFruitingEdible[check].IsAlive = true;
+                    plantFruitingInEdible[check].IsAlive = true;
                 }
             }
             if (yy > 0)
@@ -70,9 +63,9 @@ namespace Farm1
                 {
                     cells[check].fullness = 4;
                     cells[check].plantSeed = true;
-                    plantFruitingEdible[check].IsAlive = true;
+                    plantFruitingInEdible[check].IsAlive = true;
                 }
             }
-        }
+        }*/
     }
 }
